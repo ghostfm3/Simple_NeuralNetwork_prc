@@ -2,6 +2,7 @@
 #include <vector>
 #include <random>
 
+//simpleNNClass
 class SimpleNeuralNetwork {
 private:
 	std::vector<std::vector<double>> weight;
