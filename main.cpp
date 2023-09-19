@@ -4,7 +4,7 @@
 
 //simpleNNClass
 class SimpleNeuralNetwork {
-private:
+public:
 	std::vector<std::vector<double>> weight;
 	std::vector<std::vector<double>> weight2;
 	std::vector<double> bias;
@@ -112,66 +112,6 @@ public:
 		}
 	}
 
-	void printHiddenLayer() {
-		int hiddenSize = hidden.size();  
-
-		// 入力値
-		std::cout << "x: ";
-		for (double value : x) {
-			std::cout << value << " ";
-		}
-		std::cout << std::endl;
-
-		// 重み
-		std::cout << "weight: ";
-		for (size_t i = 0; i < hiddenSize; ++i) {
-			for (double value : weight[i]) {
-				std::cout << value << " ";
-			}
-			std::cout << "| ";
-		}
-		std::cout << std::endl;
-
-		// バイアス
-		std::cout << "bias: ";
-		for (double value : bias) {
-			std::cout << value << " ";
-		}
-		std::cout << std::endl;
-
-		// 隠れ層
-		std::cout << "hidden: ";
-		for (size_t i = 0; i < hiddenSize; ++i) {
-			std::cout << hidden[i] << " ";
-		}
-		std::cout << "\n";
-
-		// 重み2
-		std::cout << "weight2:";
-		for (size_t i = 0; i < output.size(); ++i) {
-			for (double value : weight2[i]) {
-				std::cout << value << " ";
-			}
-			std::cout << "|";
-		}
-		std::cout << std::endl;
-
-		//バイアス2
-		std::cout << "bias2:";
-		for (double value : bias2) {
-			std::cout << value << " ";
-		}
-		std::cout << std::endl;
-
-		// 出力
-		std::cout << "output:";
-		for (size_t i = 0; i < output.size(); ++i) {
-			std::cout << output[i] << " ";
-		}
-		std::cout << std::endl;
-
-	}
-
 };
 
 int main() {
@@ -181,7 +121,61 @@ int main() {
 	//計算・出力
 	nn.calcHiddenLayer();
 	nn.calcOutputLayer();
-	nn.printHiddenLayer();
+	//nn.printHiddenLayer();
+	
+	// 入力
+	std::cout << "input:";
+	for (double value : nn.x) {
+		std::cout << value << " ";
+	}
+	std::cout << std::endl;
+
+	// 重み
+	std::cout << "weight: \n";
+	for (size_t i = 0; i < nn.weight.size(); ++i) {
+		for (double value : nn.weight[i]) {
+			std::cout << value << " ";
+		}
+		std::cout << std::endl;
+	}
+
+	// バイアス
+	std::cout << "bias: ";
+	for (double value : nn.bias) {
+		std::cout << value << " ";
+	}
+	std::cout << std::endl;
+
+	// 隠れ層
+	std::cout << "weight: ";
+	for (size_t i = 0; i < nn.hidden.size(); ++i) {
+		std::cout << nn.hidden[i] << " ";
+	}
+	std::cout << std::endl;
+
+	// 重み2
+	std::cout << "weight2:";
+	for (size_t i = 0; i < nn.output.size(); ++i) {
+		for (double value : nn.weight2[i]) {
+			std::cout << value << " ";
+		}
+		std::cout << std::endl;
+	}
+
+	//バイアス2
+	std::cout << "bias2:";
+	for (double value : nn.bias2) {
+		std::cout << value << " ";
+	}
+	std::cout << std::endl;
+
+	// 出力
+	std::cout << "output:";
+	for (size_t i = 0; i < nn.output.size(); ++i) {
+		std::cout << nn.output[i] << " ";
+	}
+	std::cout << std::endl;
+
 
 	return 0;
 }
